@@ -68,3 +68,4 @@ dist-ssr
 *.sln
 *.sw?
 >>>>>>> 63c8968 (save)
+/.metadata/

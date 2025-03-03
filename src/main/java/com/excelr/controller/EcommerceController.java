@@ -77,21 +77,7 @@ public class EcommerceController {
 	    }
 	}
 
-	 @GetMapping("/admin/users")
-	    public ResponseEntity<List<User>> getAllUsers() {
-	        List<User> users = ecommerceService.getAllUsers();
-	        return ResponseEntity.ok(users);
-	    }
-
-	 @PutMapping("/admin/users/{id}/role")
-	 public ResponseEntity<User> updateUserRole(@PathVariable Long id, @RequestBody Map<String, String> requestBody) {
-	     String newRole = requestBody.get("role"); 
-	     if (newRole == null || (!newRole.equals("ROLE_USER") && !newRole.equals("ROLE_ADMIN"))) {
-	         return ResponseEntity.badRequest().body(null);  
-	     }
-	     User updatedUser = ecommerceService.updateUserRole(id, newRole);  
-	     return ResponseEntity.ok(updatedUser);
-	 }
+	
 
 	
 	@GetMapping("/user/laptops")

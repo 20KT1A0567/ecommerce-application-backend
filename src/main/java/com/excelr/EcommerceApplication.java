@@ -1,13 +1,20 @@
 package com.excelr;
 
+import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import io.github.cdimascio.dotenv.Dotenv;
 
-@SpringBootApplication(scanBasePackages = "com.excelr")
+@SpringBootApplication
 public class EcommerceApplication {
+    public static void main(String[] args) {
+        // Load .env file
+        Dotenv dotenv = Dotenv.configure().load();
 
-	public static void main(String[] args) {
-		SpringApplication.run(EcommerceApplication.class, args);
-	}
+        // Set environment variables
+        dotenv.entries().forEach(entry -> System.setProperty(entry.getKey(), entry.getValue()));
 
+        // Run Spring Boot application
+        SpringApplication.run(EcommerceApplication.class, args);
+    }
 }
